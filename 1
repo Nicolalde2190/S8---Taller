@@ -1,0 +1,26 @@
+#include <stdio.h>
+typedef struct {
+    char nombre[50];
+    int cantidad;
+    float precio;
+} Producto;
+Producto inventario[100];
+int contador = 0;
+void ingresar_producto(char nombre[], int cantidad, float precio) {
+    Producto producto;
+    strcpy(producto.nombre, nombre);
+    producto.cantidad = cantidad;
+    producto.precio = precio;
+    inventario[contador++] = producto;
+}
+void listar_productos() {
+    for(int i = 0; i < contador; i++) {
+        printf("Nombre: %s, Cantidad: %d, Precio: %.2f\n", inventario[i].nombre, inventario[i].cantidad, inventario[i].precio);
+    }
+}
+int main() {
+    ingresar_producto("Manzana", 10, 0.5);
+    ingresar_producto("Banana", 20, 0.3);
+    listar_productos();
+    return 0;
+}
